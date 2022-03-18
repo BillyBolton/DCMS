@@ -263,3 +263,14 @@ CREATE TABLE INSURANCE_CLAIM(
     FOREIGN KEY (policy_number) REFERENCES INSURANCE(policy_number),
     FOREIGN KEY (group_number) REFERENCES INSURANCE(group_number)
 ) INHERITS (PAYMENT);
+-- =============================================================
+-- TEMP
+-- =============================================================
+CREATE OR REPLACE FUNCTION CALCULATE_TOTAL_CHARGE () RETURNS DOUBLE PRECISION AS $total_charge$
+declare total_charge DOUBLE PRECISION;
+BEGIN
+SELECT SUM() into test
+FROM EMP;
+RETURN test;
+END;
+$test$ LANGUAGE plpgsql;
