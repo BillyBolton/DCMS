@@ -26,6 +26,8 @@ replay_pid*
 
 bin/
 .gradle
+.gradle/
+.gradle/**
 **/build/
 !src/**/build/
 
@@ -179,3 +181,5 @@ dist
 .pnp.*
 
 .DS_Store
+
+.pgadmin.env
