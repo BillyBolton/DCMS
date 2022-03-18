@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-
 public class ProfileDTO {
+
     private String id;
     private String username;
     private String password;
@@ -18,5 +18,3 @@ public class ProfileDTO {
     private Date DOB;
 
 }
-
-

@@ -99,10 +99,10 @@ CREATE SEQUENCE branch_seq START 1;
 DROP TABLE IF EXISTS BRANCH CASCADE;
 CREATE TABLE BRANCH(
     id VARCHAR(255) NOT NULL DEFAULT 'B_' || nextval('branch_seq')::VARCHAR(255) UNIQUE,
-    -- manager_id BIGINT NOT NULL,
+    manager_id BIGINT NOT NULL,
     address_id BIGINT NOT NULL UNIQUE,
     FOREIGN KEY(address_id) REFERENCES ADDRESS(id),
-    -- FOREIGN KEY (manager_id) REFERENCES EMPLOYEE(eId),
+    FOREIGN KEY (manager_id) REFERENCES EMPLOYEE(eId),
     PRIMARY KEY (id)
 );
 -- =============================================================
@@ -221,7 +221,7 @@ CREATE TABLE FEE(
 -- INVOICE
 -- =============================================================
 -- =============================================================
--- PAYMENT
+-- PAYMENT TODO
 -- =============================================================
 DROP TABLE IF EXISTS PAYMENT CASCADE;
 CREATE TABLE PAYMENT(
@@ -243,7 +243,8 @@ CREATE TABLE PAYMENT_TYPE(
 -- =============================================================
 DROP TABLE IF EXISTS PATIENT_BILLING CASCADE;
 CREATE TABLE PATIENT_BILLING(
-    card_number BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY UNIQUE CHECK(LENGTH(card_number::TEXT) = 16),
+    id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY UNIQUE,
+    card_number BIGINT NOT NULL UNIQUE CHECK(LENGTH(card_number::TEXT) = 16),
     expiry_date smallint NOT NULL CHECK(
         expiry_date > 0
         AND(LENGTH(expiry_date::TEXT) = 4)
@@ -266,11 +267,11 @@ CREATE TABLE INSURANCE_CLAIM(
 -- =============================================================
 -- TEMP
 -- =============================================================
-CREATE OR REPLACE FUNCTION CALCULATE_TOTAL_CHARGE () RETURNS DOUBLE PRECISION AS $total_charge$
-declare total_charge DOUBLE PRECISION;
-BEGIN
-SELECT SUM() into test
-FROM EMP;
-RETURN test;
-END;
-$test$ LANGUAGE plpgsql;
+-- CREATE OR REPLACE FUNCTION CALCULATE_TOTAL_CHARGE () RETURNS DOUBLE PRECISION AS $total_charge$
+-- declare total_charge DOUBLE PRECISION;
+-- BEGIN
+-- SELECT SUM() into test
+-- FROM EMP;
+-- RETURN test;
+-- END;
+-- $test$ LANGUAGE plpgsql;
