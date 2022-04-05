@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import ca.me.proj.dtos.employee.EmployeeRole;
+import ca.me.proj.dtos.employee.EmployeeType;
 import ca.me.proj.entity.base.AbstractStringEntity;
 import ca.me.proj.entity.branch.BranchEntity;
 import ca.me.proj.entity.profile.ProfileEntity;
@@ -37,8 +38,9 @@ public class EmployeeEntity extends AbstractStringEntity {
     private EmployeeRole role;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private EmployeeType type;
 
     @NotNull
     @Column(name = "salary")

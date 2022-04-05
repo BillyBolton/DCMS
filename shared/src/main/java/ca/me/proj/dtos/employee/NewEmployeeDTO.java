@@ -1,13 +1,12 @@
 package ca.me.proj.dtos.employee;
 
-import ca.me.proj.dtos.branch.BranchDTO;
 import ca.me.proj.dtos.profile.ProfileDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class EmployeeDTO {
+public class NewEmployeeDTO {
 
     private long SSN;
     private EmployeeRole role;
@@ -19,11 +18,7 @@ public class EmployeeDTO {
     private String id;
     // private String managerID;
 
-
-    // private String branchID;
-
-    // @JsonIgnore
-    private BranchDTO branch;
+    private String branchID;
 
     private ProfileDTO profile;
 
