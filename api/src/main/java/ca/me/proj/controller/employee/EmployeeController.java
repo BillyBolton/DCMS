@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ca.me.proj.dtos.employee.EmployeeDTO;
+import ca.me.proj.dtos.employee.NewEmployeeDTO;
 import ca.me.proj.service.employee.EmployeeService;
 
 
@@ -34,6 +35,11 @@ public class EmployeeController {
 
     @PostMapping("/create")
     public EmployeeDTO createEmployee(@RequestBody EmployeeDTO dto) {
+        return service.createEmployee(dto);
+    }
+
+    @PostMapping("/create/lite")
+    public NewEmployeeDTO createEmployee(@RequestBody NewEmployeeDTO dto) {
         return service.createEmployee(dto);
     }
 
